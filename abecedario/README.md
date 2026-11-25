@@ -46,8 +46,8 @@ The root directory and Node.js version are project-level settings:
 | Project name | `el-abecedario-de-penelope` |
 | Root Directory | `abecedario` |
 | Framework Preset | Vite |
-| Install Command | `bunx bun@1.4.4 install --frozen-lockfile` |
-| Build Command | `bunx bun@1.4.4 run build` |
+| Install Command | `bun --version && bun install --frozen-lockfile` |
+| Build Command | `bun run build` |
 | Output Directory | `dist` |
 | Node.js Version | `22.x` |
 | Environment variables | None required |
@@ -59,11 +59,13 @@ preview deployments and pushes to the production branch trigger production
 deployments. Import the existing repository; do not deploy the repository root
 or create a copy of the app in a second repository.
 
-The two commands explicitly pin Bun for both installation and building.
-Vercel detects `bun.lock`, but its default Bun release comes from the build
-container; `packageManager` alone does not pin that release. `bunVersion`
-controls function runtimes, which this static app does not use.
-See [Vercel's Bun version guidance](https://vercel.com/docs/package-managers#pinning-a-bun-version)
+Cloud builds use Vercel's bundled Bun directly and log its version before
+installation. The frozen lockfile keeps dependency versions fixed; Bun 1.4.4
+remains the locally tested version in `packageManager`. That field alone does
+not pin the build container's Bun release. Avoid an extra `bunx bun@...`
+bootstrap step in this environment. `bunVersion` controls function runtimes,
+which this static app does not use.
+See [Vercel's package-manager guidance](https://vercel.com/docs/package-managers)
 and [root-directory settings](https://vercel.com/docs/builds/configure-a-build#root-directory).
 
 No database, server functions, audio-generation service or API keys are needed
