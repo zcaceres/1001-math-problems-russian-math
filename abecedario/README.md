@@ -52,12 +52,14 @@ The root directory and Node.js version are project-level settings:
 | Node.js Version | `22.x` |
 | Environment variables | None required |
 
+The GitHub integration is connected. `main` is the production branch; pushes
+to feature branches and pull requests create preview deployments. Prefer this
+Git-based workflow for routine previews so each deployment matches a commit.
+
 The app directory must exist on the branch being deployed. For production,
-review and merge the app PR first, then use `main` as the production branch.
-Once the GitHub integration is connected, subsequent pull requests can receive
-preview deployments and pushes to the production branch trigger production
-deployments. Import the existing repository; do not deploy the repository root
-or create a copy of the app in a second repository.
+review and merge the app PR only after approval; a push to `main` triggers a
+production deployment. Do not deploy the repository root or create a copy of
+the app in a second repository.
 
 Cloud builds use Vercel's bundled Bun directly and log its version before
 installation. The frozen lockfile keeps dependency versions fixed; Bun 1.4.4
