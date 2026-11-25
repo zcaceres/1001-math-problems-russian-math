@@ -1,0 +1,39 @@
+{
+  "voice": "Paulina (Spanish (Mexico))",
+  "rate": 90,
+  "status": "Unreviewed speech-derived prototype samples",
+  "clips": {
+    "m": {
+      "source": "m-mmm.aiff",
+      "text": "mmm",
+      "sha256": "6a5cabb6f58f986bb74661a8b894d39aba5b177ffecd316df56bd0ea3a2a4e98",
+      "start": 0.01,
+      "end": 0.38,
+      "tempo": 1
+    },
+    "p": {
+      "source": "p-papa.aiff",
+      "text": "papá",
+      "sha256": "7b5897ee556fb0140b57b57b8b537a61d39d071ab94699c10e26b20db8c5482d",
+      "start": 0.09,
+      "end": 0.118,
+      "tempo": 1
+    },
+    "s": {
+      "source": "s-sopa.aiff",
+      "text": "sopa",
+      "sha256": "e9e41c69b1f10a43e0f1adb346fd290aa021771be7a58a18a8b69a5a3a28c7ee",
+      "start": 0.01,
+      "end": 0.205,
+      "tempo": 0.75
+    },
+    "l": {
+      "source": "l-luna.aiff",
+      "text": "luna",
+      "sha256": "f82b4e0ec3e2af3d237bc2d53401699c2c366ee13595aba6f14a13f0fce5a8ab",
+      "start": 0.015,
+      "end": 0.115,
+      "tempo": 0.6
+    }
+  }
+}

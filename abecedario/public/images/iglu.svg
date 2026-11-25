@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 280" fill="none">
+  <defs>
+    <radialGradient id="ice" cx=".3" cy=".15" r=".9"><stop stop-color="#f1f4ef"/><stop offset=".5" stop-color="#d7e4e4"/><stop offset="1" stop-color="#abc6cd"/></radialGradient>
+    <filter id="paper"><feTurbulence baseFrequency=".55" numOctaves="3" seed="4" type="fractalNoise"/><feColorMatrix type="saturate" values="0"/><feComposite in2="SourceGraphic" operator="in"/><feBlend in="SourceGraphic" mode="soft-light"/></filter>
+    <clipPath id="dome"><path d="M48 203c0-75 40-128 106-128s109 52 113 128c-49 19-160 21-219 0Z"/></clipPath>
+  </defs>
+  <g filter="url(#paper)">
+    <ellipse cx="156" cy="211" rx="119" ry="12" fill="#d8e5e3" opacity=".55"/>
+    <path d="M48 203c0-75 40-128 106-128s109 52 113 128c-49 19-160 21-219 0Z" fill="url(#ice)" stroke="#b8cdd1" stroke-width="1.5"/>
+    <g clip-path="url(#dome)" stroke="#9fbcc6" stroke-width="2" opacity=".7">
+      <path d="M61 111c50 13 128 15 183 0M51 145c62 17 148 17 205 0M45 179c65 16 163 19 219-1"/>
+      <path d="m138 75-3 46m49-39 7 39M100 120l-7 33m68-29v35m64-41 11 32M68 150l-7 34m67-27-3 36m70-37 5 35M95 191l-3 22m69-19v23m75-27 6 21"/>
+    </g>
+    <path d="M170 214v-40c0-42 66-42 67 0l5 39c-24 7-50 8-72 1Z" fill="#c4dadd" stroke="#aac5cd" stroke-width="1.5"/>
+    <path d="M187 215v-39c0-23 33-23 34 0l3 39" fill="#7197a4"/>
+    <path d="M189 214v-34c0-20 13-29 26-19-23-3-19 28-17 54" fill="#577e8e" opacity=".6"/>
+    <path d="m173 163 16 7m35-7 11-6m-30-13v17m-35 24h17m36 3h17" stroke="#9cbcc5" stroke-width="1.5"/>
+    <path d="M77 210c23 4 57 5 78 3m88-1 18-3" stroke="#f4f6ef" stroke-width="4" stroke-linecap="round"/>
+  </g>
+</svg>

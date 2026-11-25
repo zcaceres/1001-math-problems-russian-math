@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 280" fill="none">
+  <defs>
+    <radialGradient id="fur" cx=".35" cy=".25" r=".9"><stop stop-color="#bb9572"/><stop offset=".6" stop-color="#a47c59"/><stop offset="1" stop-color="#836044"/></radialGradient>
+    <radialGradient id="belly"><stop stop-color="#cfb08c"/><stop offset="1" stop-color="#b3916c"/></radialGradient>
+    <filter id="paper"><feTurbulence baseFrequency=".6" numOctaves="4" seed="3" type="fractalNoise"/><feColorMatrix type="saturate" values="0"/><feComposite in2="SourceGraphic" operator="in"/><feBlend in="SourceGraphic" mode="soft-light"/></filter>
+  </defs>
+  <g filter="url(#paper)">
+    <ellipse cx="161" cy="177" rx="61" ry="66" fill="url(#fur)"/>
+    <ellipse cx="160" cy="181" rx="39" ry="46" fill="url(#belly)"/>
+    <ellipse cx="109" cy="174" rx="22" ry="47" transform="rotate(16 109 174)" fill="url(#fur)"/>
+    <ellipse cx="213" cy="174" rx="22" ry="47" transform="rotate(-16 213 174)" fill="url(#fur)"/>
+    <ellipse cx="113" cy="220" rx="34" ry="24" transform="rotate(-13 113 220)" fill="url(#fur)"/>
+    <ellipse cx="208" cy="220" rx="34" ry="24" transform="rotate(13 208 220)" fill="url(#fur)"/>
+    <ellipse cx="111" cy="220" rx="19" ry="14" transform="rotate(-13 111 220)" fill="#74583f" opacity=".4"/>
+    <ellipse cx="211" cy="220" rx="19" ry="14" transform="rotate(13 211 220)" fill="#74583f" opacity=".4"/>
+    <circle cx="119" cy="69" r="24" fill="url(#fur)"/><circle cx="204" cy="69" r="24" fill="url(#fur)"/>
+    <circle cx="119" cy="69" r="13" fill="#795a42" opacity=".6"/><circle cx="204" cy="69" r="13" fill="#795a42" opacity=".6"/>
+    <path d="M102 104c0-37 22-57 60-57s59 26 59 57c0 39-26 56-59 56s-60-20-60-56Z" fill="url(#fur)"/>
+    <ellipse cx="161" cy="123" rx="28" ry="21" fill="#d1b18c"/>
+    <ellipse cx="137" cy="102" rx="4.5" ry="5.6" fill="#443a2d"/><ellipse cx="186" cy="102" rx="4.5" ry="5.6" fill="#443a2d"/>
+    <circle cx="138" cy="100" r="1.2" fill="#f9efda"/><circle cx="187" cy="100" r="1.2" fill="#f9efda"/>
+    <path d="M151 117c0-7 22-7 22 0 0 6-8 10-11 10s-11-5-11-10Z" fill="#594735"/>
+    <path d="M162 126v7m-10 0c3 5 8 5 10 0 4 5 8 5 11 0" stroke="#826047" stroke-width="1.7" stroke-linecap="round"/>
+    <path d="m151 63 3 7m6-9 1 7m7-6-1 7" stroke="#d3ad83" stroke-width="1.4" stroke-linecap="round"/>
+  </g>
+</svg>
