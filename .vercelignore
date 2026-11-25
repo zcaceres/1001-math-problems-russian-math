@@ -1,0 +1,10 @@
+# CLI deploys start at the repository root; only the alphabet app is needed.
+raw_russian_text.txt
+abecedario/node_modules/
+abecedario/dist/
+abecedario/test-results/
+abecedario/playwright-report/
+abecedario/*.tsbuildinfo
+**/.vercel/
+**/.env*
+**/*.local

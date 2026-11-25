@@ -1,7 +1,7 @@
 # El abecedario de Penélope
 
 A standalone, Spanish-first sound-exploration app for toddlers and their families.
-Everything lives in this directory; the repository's math content is untouched.
+The application lives in this directory; the repository's math content is untouched.
 
 ## Run
 
@@ -33,12 +33,17 @@ worker or promise offline operation.
 
 ## Deploy to Vercel
 
-Import `zcaceres/1001-math-problems-russian-math` as a new Vercel project and
-use the following **Build and Deployment** settings:
+The Vercel project is `el-abecedario-de-penelope` in **Bold Conjectures**
+(`zachs-projects-837afe60`). It uses the existing GitHub repository
+`zcaceres/1001-math-problems-russian-math`.
+
+`vercel.json` defines the framework, install command, build command and output
+directory. Keep these in source control rather than overriding them separately.
+The root directory and Node.js version are project-level settings:
 
 | Setting | Value |
 | --- | --- |
-| Suggested project name | `el-abecedario-de-penelope` |
+| Project name | `el-abecedario-de-penelope` |
 | Root Directory | `abecedario` |
 | Framework Preset | Vite |
 | Install Command | `bunx bun@1.4.4 install --frozen-lockfile` |
@@ -65,6 +70,32 @@ No database, server functions, audio-generation service or API keys are needed
 in Vercel. Existing recordings are deployed as static files. After deploying,
 check the opening screen, letter/word playback and listening game on a physical
 iPad in Safari. The audio remains prototype material as described below.
+
+### Deploy a branch without promoting it
+
+Run this from the **repository root**, not from `abecedario/`, because Vercel
+applies the configured Root Directory to the uploaded source:
+
+```sh
+bunx vercel@67.0.0 deploy \
+  --project el-abecedario-de-penelope \
+  --scope zachs-projects-837afe60 \
+  --local-config abecedario/vercel.json \
+  --prod --skip-domain --yes
+```
+
+Vercel treats a new project's first deployment as production even when preview
+is requested. `--skip-domain` stages that production build at its generated URL
+without assigning production domains. Do not promote it or merge its PR until
+that is explicitly approved. For later preview deployments, replace
+`--prod --skip-domain` with `--environment preview`.
+
+The repository's `.vercelignore` excludes the math source, local builds, test
+reports and environment files from CLI uploads. The project also excludes files
+outside `abecedario/` from the cloud build. Using `--project` avoids writing local
+Vercel link metadata. CLI 67 is run through Bun without changing a globally
+installed CLI. Keep deployment protection enabled; the generated URL may ask
+you to sign in to the project's Vercel workspace.
 
 ## The experience
 
