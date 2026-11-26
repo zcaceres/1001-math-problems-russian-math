@@ -26,7 +26,7 @@ test('animates the title, then opens exploration silently after a brief delay', 
   await page.clock.runFor(1)
   await expect(page.locator('.title-screen')).toHaveCount(0)
   await expect(page.getByRole('heading', { name: 'Explorar los sonidos', exact: true })).toBeVisible()
-  await expect(page.getByRole('button', { name: 'Escuchar el sonido de a', exact: true })).toBeVisible()
+  await expect(page.getByRole('button', { name: 'Escuchar la letra a', exact: true })).toBeVisible()
   await expect(page.locator('.app-shell')).not.toHaveAttribute('inert', '')
   expect(audioRequests).toEqual([])
 })
@@ -51,7 +51,7 @@ test('keyboard entry moves focus into exploration and the title does not replay 
   await page.keyboard.press(browserName === 'webkit' ? 'Alt+Tab' : 'Tab')
   await expect(page.getByRole('button', { name: 'Entrar al abecedario' })).toBeFocused()
   await page.keyboard.press('Enter')
-  await expect(page.getByRole('button', { name: 'Escuchar el sonido de a', exact: true })).toBeFocused()
+  await expect(page.getByRole('button', { name: 'Escuchar la letra a', exact: true })).toBeFocused()
   await page.getByRole('button', { name: 'Menú de actividades' }).click()
   await page.getByRole('button', { name: 'Escuchar y encontrar', exact: true }).click()
   await page.getByRole('button', { name: 'Menú de actividades' }).click()
@@ -72,7 +72,7 @@ test('reduced motion shows the complete static title and enters sooner', async (
   await expect(page.locator('.title-screen')).toHaveCount(1)
   await page.clock.runFor(1)
   await expect(page.locator('.title-screen')).toHaveCount(0)
-  await expect(page.getByRole('button', { name: 'Escuchar el sonido de a', exact: true })).toBeVisible()
+  await expect(page.getByRole('button', { name: 'Escuchar la letra a', exact: true })).toBeVisible()
 })
 
 test('the opening cannot get stuck when fonts fail and animations are disabled', async ({ page }) => {
@@ -81,7 +81,7 @@ test('the opening cannot get stuck when fonts fail and animations are disabled',
   await page.addStyleTag({ content: '* { animation: none !important; }' })
   await page.clock.runFor(2400)
   await expect(page.locator('.title-screen')).toHaveCount(0)
-  await expect(page.getByRole('button', { name: 'Escuchar el sonido de a', exact: true })).toBeVisible()
+  await expect(page.getByRole('button', { name: 'Escuchar la letra a', exact: true })).toBeVisible()
 })
 
 test('the opening fits phones and both tablet orientations and remains accessible', async ({ page }) => {

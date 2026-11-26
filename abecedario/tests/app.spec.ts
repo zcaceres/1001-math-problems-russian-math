@@ -1,5 +1,6 @@
 import { expect, test, type Page } from '@playwright/test'
 import AxeBuilder from '@axe-core/playwright'
+import { collections, getCollection } from '../src/content/letters'
 
 async function openMenu(page: Page) {
   await page.getByRole('button', { name: 'Menú de actividades' }).click()
@@ -53,8 +54,8 @@ test('opens with only the core interaction, navigation and a collapsed menu', as
   expect(await page.evaluate(() => sessionStorage.getItem('last-audio'))).toBeNull()
 })
 
-test('plays separate phoneme and word recordings on deliberate taps', async ({ page }) => {
-  await page.getByRole('button', { name: 'Escuchar el sonido de a', exact: true }).click()
+test('plays separate human letter and word recordings on deliberate taps', async ({ page }) => {
+  await page.getByRole('button', { name: 'Escuchar la letra a', exact: true }).click()
   await expect.poll(() => page.evaluate(() => sessionStorage.getItem('last-audio'))).toContain('/audio/a.mp3')
   await page.getByRole('button', { name: 'Escuchar la palabra abeja' }).click()
   await expect.poll(() => page.evaluate(() => sessionStorage.getItem('last-audio'))).toContain('/audio/abeja.mp3')
@@ -63,17 +64,17 @@ test('plays separate phoneme and word recordings on deliberate taps', async ({ p
 
 test('navigates both ways and changes the letter collection', async ({ page }) => {
   await page.getByRole('button', { name: 'Letra siguiente' }).click()
-  await expect(page.getByRole('button', { name: 'Escuchar el sonido de e', exact: true })).toBeVisible()
+  await expect(page.getByRole('button', { name: 'Escuchar la letra e', exact: true })).toBeVisible()
   await page.getByRole('button', { name: 'Letra anterior' }).click()
   await page.getByRole('button', { name: 'Letra anterior' }).click()
   await expect(page.getByRole('img', { name: 'uvas', exact: true })).toBeVisible()
   await selectMenuOption(page, 'Primeras consonantes')
   await expect(page.getByRole('img', { name: 'Letra 1 de 4' })).toBeVisible()
-  await expect(page.getByRole('button', { name: 'Escuchar el sonido de m', exact: true })).toBeVisible()
+  await expect(page.getByRole('button', { name: 'Escuchar la letra m', exact: true })).toBeVisible()
   await selectMenuOption(page, 'Explorar s, sol')
   await expect(page.getByRole('img', { name: 'sol', exact: true })).toBeVisible()
   await selectMenuOption(page, 'Las vocales')
-  await expect(page.getByRole('button', { name: 'Escuchar el sonido de a', exact: true })).toBeVisible()
+  await expect(page.getByRole('button', { name: 'Escuchar la letra a', exact: true })).toBeVisible()
 })
 
 test('mute stops audio and an explicit listen action restores it', async ({ page }) => {
@@ -83,7 +84,7 @@ test('mute stops audio and an explicit listen action restores it', async ({ page
   await page.getByRole('button', { name: 'Cerrar menú' }).click()
   await page.getByRole('button', { name: 'Letra siguiente' }).click()
   expect(await page.evaluate(() => sessionStorage.getItem('last-audio'))).toBeNull()
-  await page.getByRole('button', { name: 'Escuchar el sonido de e', exact: true }).click()
+  await page.getByRole('button', { name: 'Escuchar la letra e', exact: true }).click()
   await expect.poll(() => page.evaluate(() => sessionStorage.getItem('last-audio'))).toContain('/audio/e.mp3')
   await openMenu(page)
   await expect(page.getByRole('button', { name: 'Silenciar sonido' })).toBeVisible()
@@ -93,7 +94,7 @@ test('listening activity allows retry and advances without scores or timers', as
   await selectMenuOption(page, 'Escuchar y encontrar')
   await expect(page.locator('.choice-card')).toHaveCount(2)
   await expect(page.locator('.choice-card').first()).toHaveAttribute('aria-disabled', 'true')
-  await page.getByRole('button', { name: 'Escuchar el sonido que buscamos' }).click()
+  await page.getByRole('button', { name: 'Escuchar la letra que buscamos' }).click()
   await expect.poll(() => page.evaluate(() => sessionStorage.getItem('last-audio'))).toMatch(/\/audio\/[aeiou]\.mp3$/)
   const target = await page.evaluate(() => sessionStorage.getItem('last-audio')!.match(/\/([aeiou])\.mp3$/)![1])
   const wrong = page.locator('.choice-card').filter({ hasNotText: target })
@@ -105,7 +106,7 @@ test('listening activity allows retry and advances without scores or timers', as
   await page.getByRole('button', { name: 'Otro sonido' }).click()
   await expect(page.locator('.found-check')).toHaveCount(0)
   await expect(page.locator('.listen-content [aria-live]')).toHaveText('Primero, toca para escuchar')
-  await page.getByRole('button', { name: 'Escuchar el sonido que buscamos' }).click()
+  await page.getByRole('button', { name: 'Escuchar la letra que buscamos' }).click()
   await expect.poll(() => page.evaluate(() => sessionStorage.getItem('last-audio'))).not.toContain(`/audio/${target}.mp3`)
 })
 
@@ -115,7 +116,8 @@ test('family controls require a hold and preserve case preferences', async ({ pa
   await expect(page.getByText('Así vemos las letras')).not.toBeVisible()
   await page.getByRole('button', { name: 'Cerrar espacio para familias' }).click()
   await unlockFamilies(page)
-  await expect(page.getByText('Audio de prueba', { exact: true })).toBeVisible()
+  await expect(page.getByText('Grabaciones de voz', { exact: true })).toBeVisible()
+  await expect(page.locator('.audio-note')).toContainText('«eme», «pe», «ese» y «ele»')
   await page.getByRole('button', { name: /ABC Mayúsculas/ }).click()
   await page.getByRole('button', { name: 'Volver a descubrir' }).click()
   await expect(page.locator('.hero-letter')).toHaveText('A')
@@ -132,23 +134,31 @@ test('family controls require a hold and preserve case preferences', async ({ pa
 
 test('shows a retryable message when audio cannot load', async ({ page }) => {
   await page.route('**/audio/a.mp3', (route) => route.abort())
-  await page.getByRole('button', { name: 'Escuchar el sonido de a', exact: true }).click()
+  await page.getByRole('button', { name: 'Escuchar la letra a', exact: true }).click()
   await expect(page.getByRole('status')).toContainText('No pudimos reproducir')
   await page.unroute('**/audio/a.mp3')
-  await page.getByRole('button', { name: 'Escuchar el sonido de a', exact: true }).click()
+  await page.getByRole('button', { name: 'Escuchar la letra a', exact: true }).click()
   await expect.poll(() => page.evaluate(() => sessionStorage.getItem('last-audio'))).toContain('/audio/a.mp3')
   await expect(page.getByRole('status')).not.toContainText('No pudimos')
 })
 
-test('all nine illustrated letters work without runtime errors', async ({ page }) => {
+test('all nine human-recorded pairs load and play without runtime errors', async ({ page }) => {
   const errors: string[] = []
   page.on('pageerror', (error) => errors.push(error.message))
-  for (const collection of ['Las vocales', 'Primeras consonantes']) {
-    await selectMenuOption(page, collection)
-    const count = collection === 'Las vocales' ? 5 : 4
-    for (let index = 0; index < count; index++) {
+  for (const collection of ['vowels', 'consonants'] as const) {
+    await selectMenuOption(page, collections[collection].label)
+    for (const letter of getCollection(collection)) {
+      await expect(page.locator('.hero-letter')).toHaveText(letter.id)
       await expect(page.locator('.hero-illustration')).toBeVisible()
       await expect.poll(() => page.locator('.hero-illustration').evaluate((image: HTMLImageElement) => image.complete && image.naturalWidth > 0)).toBe(true)
+      for (const [label, audio] of [
+        [`Escuchar la letra ${letter.id}`, letter.sound],
+        [`Escuchar la palabra ${letter.word}`, letter.wordAudio],
+      ]) {
+        await page.evaluate(() => sessionStorage.removeItem('last-audio'))
+        await page.getByRole('button', { name: label, exact: true }).click()
+        await expect.poll(() => page.evaluate(() => sessionStorage.getItem('last-audio'))).toContain(`/audio/${audio}.mp3`)
+      }
       await page.getByRole('button', { name: 'Letra siguiente' }).click()
     }
   }
@@ -188,7 +198,7 @@ test('exploration, listening, popover and family settings pass automated accessi
   await openMenu(page)
   await check()
   await page.getByRole('button', { name: 'Escuchar y encontrar', exact: true }).click()
-  await page.getByRole('button', { name: 'Escuchar el sonido que buscamos' }).click()
+  await page.getByRole('button', { name: 'Escuchar la letra que buscamos' }).click()
   await check()
   await unlockFamilies(page)
   await check()
@@ -226,7 +236,7 @@ test('popover dismisses by outside tap, Escape and close, preserving the current
   await expect(page.getByRole('button', { name: 'Menú de actividades' })).toHaveAttribute('aria-expanded', 'false')
   // WebKit follows Safari's default: Option-Tab includes non-text controls.
   await page.keyboard.press(browserName === 'webkit' ? 'Alt+Tab' : 'Tab')
-  await expect(page.getByRole('button', { name: 'Escuchar el sonido de e', exact: true })).toBeFocused()
+  await expect(page.getByRole('button', { name: 'Escuchar la letra e', exact: true })).toBeFocused()
   await openMenu(page)
   await page.getByRole('button', { name: 'Cerrar menú' }).click()
   await expect(page.getByRole('button', { name: 'Menú de actividades' })).toBeFocused()
@@ -235,7 +245,7 @@ test('popover dismisses by outside tap, Escape and close, preserving the current
 
 test('touch users can play audio and select an activity from the popover', async ({ page, isMobile }) => {
   test.skip(!isMobile, 'Touch interaction is exercised by the iPad and phone projects.')
-  await page.getByRole('button', { name: 'Escuchar el sonido de a', exact: true }).tap()
+  await page.getByRole('button', { name: 'Escuchar la letra a', exact: true }).tap()
   await expect.poll(() => page.evaluate(() => sessionStorage.getItem('last-audio'))).toContain('/audio/a.mp3')
   await page.getByRole('button', { name: 'Menú de actividades' }).tap()
   await page.getByRole('button', { name: 'Escuchar y encontrar', exact: true }).tap()

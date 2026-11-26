@@ -147,7 +147,7 @@ export function App() {
         <section className={`learning-space ${mode === 'listen' ? 'listening-space' : ''}`} aria-label={mode === 'explore' ? 'Explorar los sonidos' : 'Escuchar y encontrar'}>
           {mode === 'explore' ? (
             <div className="explore-content" key={`${collectionId}-${letter.id}-${letterCase}`}>
-              <button ref={exploreButton} className="letter-panel" aria-label={`Escuchar el sonido de ${letter.id}`} onClick={() => play(letter.sound)}>
+              <button ref={exploreButton} className="letter-panel" aria-label={`Escuchar la letra ${letter.id}`} onClick={() => play(letter.sound)}>
                 <span className={`hero-letter ${playing && playingKey === letter.sound ? 'is-speaking' : ''}`}>{displayLetter(letter, letterCase)}</span>
                 <span className={`sound-disc ${playing && playingKey === letter.sound ? 'is-playing' : ''}`}><Icon name="sound" size={24} /></span>
               </button>
@@ -161,7 +161,7 @@ export function App() {
             </div>
           ) : (
             <div className="listen-content">
-              <button className={`listen-sound ${playing && playingKey === round.target.sound ? 'is-playing' : ''}`} aria-label="Escuchar el sonido que buscamos" onClick={() => { setHasListened(true); play(round.target.sound) }}><Icon name="sound" size={44} /></button>
+              <button className={`listen-sound ${playing && playingKey === round.target.sound ? 'is-playing' : ''}`} aria-label="Escuchar la letra que buscamos" onClick={() => { setHasListened(true); play(round.target.sound) }}><Icon name="sound" size={44} /></button>
               <div className="listening-choices">
                 {round.choices.map((choice) => (
                   <button
@@ -178,7 +178,7 @@ export function App() {
                 ))}
               </div>
               <div className="sr-only" aria-live="polite">
-                {answer === 'found' ? '¡La encontraste!' : answer === 'again' ? 'Escuchemos una vez más. Tú puedes.' : hasListened ? 'Toca la letra que hace ese sonido.' : 'Primero, toca para escuchar'}
+                {answer === 'found' ? '¡La encontraste!' : answer === 'again' ? 'Escuchemos una vez más. Tú puedes.' : hasListened ? 'Toca la letra que escuchaste.' : 'Primero, toca para escuchar'}
               </div>
             </div>
           )}

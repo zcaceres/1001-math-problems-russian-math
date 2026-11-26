@@ -73,7 +73,7 @@ and [root-directory settings](https://vercel.com/docs/builds/configure-a-build#r
 No database, server functions, audio-generation service or API keys are needed
 in Vercel. Existing recordings are deployed as static files. After deploying,
 check the opening screen, letter/word playback and listening game on a physical
-iPad in Safari. The audio remains prototype material as described below.
+iPad in Safari. The current consonant recordings use letter names, as described below.
 
 ### Deploy a branch without promoting it
 
@@ -113,7 +113,7 @@ you to sign in to the project's Vercel workspace.
   large touch targets, and quiet navigation. There is no header, footer, letter
   shelf, decorative copy, or scrolling through the main activity.
 - **Explorar:** one large letter and one familiar illustration. Tap the letter
-  to hear its sound, or the picture to hear the word. The bottom arrows move
+  to hear its recorded reading, or the picture to hear the word. The bottom arrows move
   between letters; small dots indicate position. No reading is required.
 - **Collapsible options:** the subtle three-dot button opens a native popover
   for activities, collections, direct letter selection, sound, and family
@@ -129,7 +129,7 @@ you to sign in to the project's Vercel workspace.
   read instructions. No autoplay, timers,
   scores, streaks, loud rewards or endless automatic progression.
 - **Para familias:** hold the button for two seconds to access lowercase/
-  uppercase preferences and the prototype-audio disclosure. This is a gentle
+  uppercase preferences and the recording note. This is a gentle
   toddler guard, not a security boundary. Space or Enter also supports the hold.
 - **Sound:** only one clip plays at a time. Navigation, opening settings, muting
   and backgrounding the page stop playback. Muting suppresses navigation audio;
@@ -146,57 +146,59 @@ This fills the browser viewport; it does not force the browser's fullscreen API.
 Listening remains an inherently auditory activity;
 the exploration mode also presents the letter, word and illustration visually.
 
-## Important: temporary audio
+## Human-recorded audio
 
-**All shipped audio is prototype material, not reviewed phonics instruction.**
-The family area states this explicitly. Do not use this build as finished
-educational material until the recordings and examples have been reviewed.
+All **18 audio clips** come from the supplied `abecedario-recording.m4a`.
+No synthesized voices, generated tones or browser speech synthesis remain.
 
-- Words and the five vowels were synthesized using the local macOS **Paulina
-  (Spanish (Mexico))** voice.
-- The four consonants are now **speech-derived clips of the same Mexican Spanish
-  voice**, not generated musical tones or white noise. `/m/` comes from a spoken
-  “mmm”; `/p/`, `/s/`, and `/l/` are cropped from the beginnings of “papá,” “sopa,”
-  and “luna,” before the following vowel. `/p/` is deliberately a brief release,
-  not a sustained tone, “pe,” or “puh.” The short `/s/` and `/l/` clips use a
-  small pitch-preserving slowdown.
-- The exact source recordings, hashes and crop boundaries are checked in under
-  `scripts/audio-sources/`. This prevents changes to an installed OS voice from
-  silently shifting a crop into a vowel. These are still **unreviewed TTS-derived
-  placeholders**, not recordings by a human Spanish educator.
-- No browser speech synthesis is used. Playback uses the bundled MP3 files,
-  avoiding differences between installed device voices.
+The complete spoken readings are preserved. As approved for this version,
+**m, p, s and l say “eme,” “pe,” “ese” and “ele”**, not isolated consonant
+phonemes. Both exploration and the listening activity use these recordings.
+The family note explains this; isolated sounds can be recorded later.
+Human recording does not imply that the audio has been reviewed by an educator.
 
-### Replacing the audio
+Each clip is cut at surrounding pauses, peak-matched to -6 dBFS before encoding,
+and given 5 ms edge fades in the pauses to avoid clicks. Export is mono, 44.1 kHz,
+128 kbps MP3. There are no pitch changes, time stretching or synthesized
+replacements. Source-device metadata is not copied into the exported clips.
 
-Replace the files in `public/audio/`, keeping the filenames:
+The original recording stays **outside the repository**, unchanged. Only the
+selected clips are shipped. `scripts/audio-sources/recording.json` records its
+SHA-256, the transcripts and cut times in decoded PCM seconds.
+`recording-checksums.json` records the recipe fingerprint and exported clip
+hashes, durations and peaks so tests catch missing, stale or mismatched audio.
 
-| Letter | Isolated sound | Word |
+| Letter | Letter recording | Word |
 | --- | --- | --- |
 | a | `a.mp3` | `abeja.mp3` |
 | e | `e.mp3` | `elefante.mp3` |
 | i | `i.mp3` | `iglu.mp3` (spoken “iglú”) |
 | o | `o.mp3` | `oso.mp3` |
 | u | `u.mp3` | `uvas.mp3` |
-| m | `m.mp3` | `manzana.mp3` |
-| p | `p.mp3` | `pato.mp3` |
-| s | `s.mp3` | `sol.mp3` |
-| l | `l.mp3` | `luna.mp3` |
+| m | `m.mp3` (“eme”) | `manzana.mp3` |
+| p | `p.mp3` (“pe”) | `pato.mp3` |
+| s | `s.mp3` (“ese”) | `sol.mp3` |
+| l | `l.mp3` (“ele”) | `luna.mp3` |
 
-Use a consistent Latin American Spanish speaker and comfortable, matched
-volume. Record the **phoneme, not the letter's name**; do not add an extra vowel
-to consonants. Have a Spanish early-literacy educator review the isolated
-sounds and words. After review, update the disclosure in
-`src/components/FamilyDialog.tsx` and this document to describe the actual
-recordings.
+### Regenerating the clips
 
-For development only, `python3 scripts/generate-placeholder-audio.py`
-regenerates the word/vowel placeholders on macOS with the Paulina voice and
-rebuilds consonants from their pinned source recordings using `ffmpeg`.
-Add `--consonants-only` to rebuild only the four consonants (requires `ffmpeg`,
-not macOS or `say`). Running either command overwrites its corresponding bundled
-audio. It is **not** required to run or build the app. When replacing the source
-speech, inspect the phoneme boundaries again; do not reuse crop times blindly.
+From `abecedario/`, with Python 3 and `ffmpeg` installed:
+
+```sh
+python3 scripts/split-recording.py /path/to/abecedario-recording.m4a
+```
+
+The script verifies the source fingerprint, renders and checks all clips in a
+temporary directory, then replaces `public/audio/*.mp3` and updates the clip
+checksums. It does not modify or copy the original recording. A different source
+file is rejected before any app audio changes. Recheck the cuts and update the
+recipe deliberately when a new recording is supplied; do not reuse timestamps
+blindly. Commit the recipe, generated checksums and exported clips together.
+Raw M4A recordings are excluded from Git in this app and from Vercel uploads.
+
+The source recording and conversion tools are **not** needed to run, test,
+build or deploy the app. The former placeholder generator and synthetic source
+clips have been removed so they cannot accidentally overwrite the human voice.
 
 ## Structure and a future iPad app
 

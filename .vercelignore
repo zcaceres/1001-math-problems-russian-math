@@ -8,3 +8,4 @@ abecedario/*.tsbuildinfo
 **/.vercel/
 **/.env*
 **/*.local
+**/*.m4a

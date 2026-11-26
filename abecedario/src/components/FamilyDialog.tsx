@@ -83,10 +83,10 @@ export function FamilyDialog({ letterCase, onCaseChange, onClose }: {
         </section>
         <section className="audio-note">
           <Icon name="sound" size={22} />
-          <div><h3>Audio de prueba</h3><p>Usamos palabras con voz sintética de México y sonidos de letras provisionales. No son grabaciones revisadas por un educador. Se reemplazarán antes de usar esta versión como material de aprendizaje.</p></div>
+          <div><h3>Grabaciones de voz</h3><p>Las letras y las palabras tienen voz humana. Por ahora, m, p, s y l se escuchan como «eme», «pe», «ese» y «ele». Más adelante usaremos sus sonidos aislados. Estas grabaciones aún no tienen una revisión educativa.</p></div>
         </section>
         <div className="family-principles">
-          <span><Icon name="check" size={16} /> Sonidos antes que nombres</span>
+          <span><Icon name="check" size={16} /> Explorar sin prisa</span>
           <span><Icon name="check" size={16} /> Sin anuncios, cuentas ni puntuaciones</span>
           <span><Icon name="check" size={16} /> Las preferencias se guardan solo aquí</span>
         </div>

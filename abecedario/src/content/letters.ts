@@ -1,7 +1,8 @@
 /**
  * Platform-independent learning content.
- * Sound files are isolated phonemes, not letter names. The shipped files are
- * temporary speech-derived samples; replace them with educator-reviewed recordings.
+ * All audio comes from the user's human recording. Letter clips preserve the
+ * spoken names (including eme, pe, ese, ele), not isolated consonant phonemes.
+ * Exploration and the listening game intentionally use the same recordings.
  */
 export interface Letter {
   id: string
