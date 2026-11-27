@@ -1,0 +1,10 @@
+node_modules/
+dist/
+test-results/
+playwright-report/
+.DS_Store
+*.local
+*.tsbuildinfo
+.vercel/
+# Keep full source recordings private; only the selected MP3 clips ship.
+*.m4a

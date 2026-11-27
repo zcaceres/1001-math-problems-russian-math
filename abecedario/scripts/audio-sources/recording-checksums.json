@@ -1,0 +1,114 @@
+{
+  "sourceSha256": "8d00095c67929fc59ac83ac0bdf86f25c8420aa95d20290c109d0b6d415574d6",
+  "recipeSha256": "bad55611c3f0505d12add3c4c9180898afd61796bf4c7e97b4318548b6d6412a",
+  "clips": {
+    "a": {
+      "sha256": "dfd7dbc673142d09fb30525c9354104540af18e88eec6da6061d75fac060a787",
+      "durationSeconds": 0.52,
+      "peakDbfs": -6.5,
+      "gainDb": 2.55
+    },
+    "abeja": {
+      "sha256": "3a73dc43f703cfe17b2e8f6c1f5916026e8bb8489b3a6459f4d0ed74a33dd716",
+      "durationSeconds": 0.93,
+      "peakDbfs": -6.47,
+      "gainDb": 10.63
+    },
+    "e": {
+      "sha256": "3625451fb3d3cb200256872294a273f0dde208efc99d480178ec7b1b1b5928d8",
+      "durationSeconds": 0.55,
+      "peakDbfs": -6.54,
+      "gainDb": 7.0
+    },
+    "elefante": {
+      "sha256": "0618217aa5e2ce916e50eeaf0e76ca471e8b4faf15903aa06102288b7f2150b0",
+      "durationSeconds": 1.17,
+      "peakDbfs": -6.47,
+      "gainDb": 6.45
+    },
+    "i": {
+      "sha256": "3634740d479ae43583cc976d8144173bd29c688bffe5c9c7e416414d491d24e7",
+      "durationSeconds": 0.55,
+      "peakDbfs": -6.48,
+      "gainDb": 10.63
+    },
+    "iglu": {
+      "sha256": "6c5c220d4a960a16295700f66ba73b15c0b6e375c6a1322ed40a5bd8ec6dd46a",
+      "durationSeconds": 0.8,
+      "peakDbfs": -6.46,
+      "gainDb": 9.94
+    },
+    "o": {
+      "sha256": "3f8bf6354e6f70f47a66c8752d0dfcd2e6a835bf8f89728c6be948fb39d0777c",
+      "durationSeconds": 0.58,
+      "peakDbfs": -6.57,
+      "gainDb": 5.0
+    },
+    "oso": {
+      "sha256": "a09f153efd962f92cd3af8e6e67da8e276a1846476e50257bc7caa2f20546cfd",
+      "durationSeconds": 0.75,
+      "peakDbfs": -6.43,
+      "gainDb": 10.37
+    },
+    "u": {
+      "sha256": "ae689e80e63da5a59a1a2fb7cccea686e9103be96fb77885715b44ce6b110592",
+      "durationSeconds": 0.57,
+      "peakDbfs": -6.44,
+      "gainDb": 7.8
+    },
+    "uvas": {
+      "sha256": "8f30ccbb13830b9153f39762ee5a774e48b99598f6c7b99c143306e5afebd364",
+      "durationSeconds": 0.9,
+      "peakDbfs": -6.36,
+      "gainDb": 14.04
+    },
+    "m": {
+      "sha256": "ba35650cec9794fa6bd44c212a452d4b474979d0bbd040b270f94fcfbc6845e7",
+      "durationSeconds": 0.82,
+      "peakDbfs": -6.35,
+      "gainDb": 6.94
+    },
+    "manzana": {
+      "sha256": "985b2536703130cfbc4d068f30bd22a25623be61356003b0ae1f1a41a329c475",
+      "durationSeconds": 1.05,
+      "peakDbfs": -6.45,
+      "gainDb": 13.31
+    },
+    "p": {
+      "sha256": "0cca42d9bcdb8fff6e3cb57cea6429a4569881ff4b683bc7a7275808c9373588",
+      "durationSeconds": 0.58,
+      "peakDbfs": -6.48,
+      "gainDb": 3.83
+    },
+    "pato": {
+      "sha256": "501521b354e80f87af1ab217415afead8d400e863e966717420ae2465fa3be4f",
+      "durationSeconds": 0.82,
+      "peakDbfs": -6.43,
+      "gainDb": 5.75
+    },
+    "s": {
+      "sha256": "ef22014d931d1ecb228a99970c98efc7468a1454097fad85d5d840b16c7f4426",
+      "durationSeconds": 0.83,
+      "peakDbfs": -6.52,
+      "gainDb": 8.15
+    },
+    "sol": {
+      "sha256": "ba977b5e79b7bc640886b0301bf853c5105b78f1990e06538ce776af4e4d6603",
+      "durationSeconds": 0.85,
+      "peakDbfs": -6.43,
+      "gainDb": 9.06
+    },
+    "l": {
+      "sha256": "7a4ad0e05509d6c7f14ec6ea6a8a962074ae3f22f72d3c8531a7927d077f3728",
+      "durationSeconds": 0.78,
+      "peakDbfs": -6.46,
+      "gainDb": 8.29
+    },
+    "luna": {
+      "sha256": "ddcb298fdec6c53f852039e4c6c2cd85fd6fdf4b3cc552c622a7fcdafa9ce3aa",
+      "durationSeconds": 0.93,
+      "peakDbfs": -6.5,
+      "gainDb": 12.44
+    }
+  }
+}

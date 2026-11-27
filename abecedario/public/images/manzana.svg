@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 280" fill="none">
+  <defs>
+    <radialGradient id="apple" cx=".3" cy=".28" r=".85"><stop stop-color="#e8b195"/><stop offset=".35" stop-color="#d98d76"/><stop offset=".75" stop-color="#bd6e5a"/><stop offset="1" stop-color="#a65d4d"/></radialGradient>
+    <linearGradient id="leaf" x1="163" y1="77" x2="222" y2="43" gradientUnits="userSpaceOnUse"><stop stop-color="#6e8559"/><stop offset="1" stop-color="#a5b17c"/></linearGradient>
+    <filter id="paper"><feTurbulence baseFrequency=".65" numOctaves="4" seed="9" type="fractalNoise"/><feColorMatrix type="saturate" values="0"/><feComposite in2="SourceGraphic" operator="in"/><feBlend in="SourceGraphic" mode="soft-light"/></filter>
+  </defs>
+  <g filter="url(#paper)">
+    <path d="M160 91c-6-19-5-33 2-48" stroke="#88714b" stroke-width="7" stroke-linecap="round"/>
+    <path d="M162 77c3-34 38-43 67-33-10 29-37 42-67 33Z" fill="url(#leaf)"/>
+    <path d="m168 74 46-24" stroke="#61794d" stroke-width="1.4" opacity=".7"/>
+    <path d="M159 91c-25-19-71-16-86 18-20 45 6 116 44 130 17 6 28-4 43-3 14 1 26 9 43 1 38-18 62-88 40-129-16-31-59-36-84-17Z" fill="url(#apple)"/>
+    <path d="M140 91c13 6 27 9 39-1" stroke="#965640" stroke-width="2" stroke-linecap="round" opacity=".5"/>
+    <path d="M104 111c-17 13-20 39-15 55" stroke="#f2d3b5" stroke-width="10" stroke-linecap="round" opacity=".45"/>
+    <path d="M96 183c2 7 5 12 8 15" stroke="#f1c9a5" stroke-width="5" stroke-linecap="round" opacity=".35"/>
+    <path d="m153 232 8 3 7-3" stroke="#8e5841" stroke-width="2" stroke-linecap="round" opacity=".5"/>
+    <g fill="#efc19c" opacity=".4"><circle cx="195" cy="129" r="1"/><circle cx="209" cy="147" r="1"/><circle cx="178" cy="176" r="1"/><circle cx="122" cy="164" r="1"/><circle cx="210" cy="190" r="1"/><circle cx="132" cy="204" r="1"/></g>
+  </g>
+</svg>

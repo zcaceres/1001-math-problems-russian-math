@@ -1,0 +1,37 @@
+{
+  "source": {
+    "filename": "abecedario-recording.m4a",
+    "sha256": "8d00095c67929fc59ac83ac0bdf86f25c8420aa95d20290c109d0b6d415574d6",
+    "kind": "human-recording",
+    "decodedSampleRate": 48000,
+    "decodedDurationSeconds": 42.537333
+  },
+  "letterPlayback": "names-as-recorded",
+  "processing": {
+    "outputSampleRate": 44100,
+    "bitrateKbps": 128,
+    "targetPeakDbfs": -6,
+    "maxGainDb": 18,
+    "fadeSeconds": 0.005
+  },
+  "clips": [
+    { "id": "a", "kind": "letter", "text": "a", "start": 2.24, "end": 2.76 },
+    { "id": "abeja", "kind": "word", "text": "abeja", "start": 3.67, "end": 4.60 },
+    { "id": "e", "kind": "letter", "text": "e", "start": 6.20, "end": 6.75 },
+    { "id": "elefante", "kind": "word", "text": "elefante", "start": 7.88, "end": 9.05 },
+    { "id": "i", "kind": "letter", "text": "i", "start": 10.79, "end": 11.34 },
+    { "id": "iglu", "kind": "word", "text": "iglú", "start": 12.46, "end": 13.26 },
+    { "id": "o", "kind": "letter", "text": "o", "start": 14.90, "end": 15.48 },
+    { "id": "oso", "kind": "word", "text": "oso", "start": 16.73, "end": 17.48 },
+    { "id": "u", "kind": "letter", "text": "u", "start": 19.09, "end": 19.66 },
+    { "id": "uvas", "kind": "word", "text": "uvas", "start": 20.92, "end": 21.82 },
+    { "id": "m", "kind": "letter", "text": "eme", "start": 23.40, "end": 24.22 },
+    { "id": "manzana", "kind": "word", "text": "manzana", "start": 25.34, "end": 26.39 },
+    { "id": "p", "kind": "letter", "text": "pe", "start": 27.96, "end": 28.54 },
+    { "id": "pato", "kind": "word", "text": "pato", "start": 30.20, "end": 31.02 },
+    { "id": "s", "kind": "letter", "text": "ese", "start": 32.66, "end": 33.49 },
+    { "id": "sol", "kind": "word", "text": "sol", "start": 34.87, "end": 35.72 },
+    { "id": "l", "kind": "letter", "text": "ele", "start": 37.45, "end": 38.23 },
+    { "id": "luna", "kind": "word", "text": "luna", "start": 39.49, "end": 40.42 }
+  ]
+}

@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 280" fill="none">
+  <defs>
+    <radialGradient id="moon" cx=".3" cy=".4" r=".8"><stop stop-color="#eee0af"/><stop offset=".55" stop-color="#e2c98c"/><stop offset="1" stop-color="#cbb073"/></radialGradient>
+    <filter id="paper"><feTurbulence baseFrequency=".65" numOctaves="4" seed="10" type="fractalNoise"/><feColorMatrix type="saturate" values="0"/><feComposite in2="SourceGraphic" operator="in"/><feBlend in="SourceGraphic" mode="soft-light"/></filter>
+  </defs>
+  <g filter="url(#paper)">
+    <path d="M194 46c-68-3-113 36-114 96-1 56 44 99 99 98 29-1 54-12 73-35-51 7-97-29-99-73-1-33 13-64 41-86Z" fill="url(#moon)"/>
+    <path d="M127 76c-43 31-46 96-11 130" stroke="#f3e9c9" stroke-width="5" stroke-linecap="round" opacity=".55"/>
+    <g fill="#c1a66c" opacity=".18"><circle cx="109" cy="141" r="12"/><circle cx="125" cy="183" r="8"/><circle cx="160" cy="217" r="13"/><circle cx="126" cy="108" r="6"/><circle cx="190" cy="223" r="5"/></g>
+  </g>
+</svg>

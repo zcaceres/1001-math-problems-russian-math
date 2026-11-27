@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 280" fill="none">
+  <defs>
+    <radialGradient id="body" cx=".35" cy=".25" r=".9"><stop stop-color="#b2c0c2"/><stop offset="1" stop-color="#7f969e"/></radialGradient>
+    <radialGradient id="ear" cx=".3" cy=".3"><stop stop-color="#c8d0ca"/><stop offset="1" stop-color="#9bacad"/></radialGradient>
+    <filter id="paper"><feTurbulence baseFrequency=".6" numOctaves="3" seed="8" type="fractalNoise"/><feColorMatrix type="saturate" values="0"/><feComposite in2="SourceGraphic" operator="in"/><feBlend in="SourceGraphic" mode="soft-light"/></filter>
+  </defs>
+  <g filter="url(#paper)">
+    <path d="M85 146c-26-2-36 14-32 32" stroke="#85999c" stroke-width="5" stroke-linecap="round"/><path d="m53 174-4 12m5-11 3 11" stroke="#71878b" stroke-width="3" stroke-linecap="round"/>
+    <path d="m100 168-5 50c-1 9 29 9 30 0l7-47m38 1 4 44c0 10 30 9 28 0l-3-44" fill="#83989d"/>
+    <path d="M75 143c0-45 33-69 78-65 50 4 70 35 68 70-2 31-24 46-74 44-42-2-73-16-72-49Z" fill="url(#body)"/>
+    <path d="m83 164 2 56c0 10 32 11 32 0l3-38m53 0 2 39c0 9 34 10 33-1l-2-47" fill="url(#body)"/>
+    <path d="M198 93c26-6 54 12 55 38l-1 48c0 16 13 22 20 8 5-9 11-1 7 8-11 31-43 24-47-7l-5-29c-24 8-48-13-48-34 0-14 7-26 19-32Z" fill="url(#body)"/>
+    <path d="M198 110c-19-37-58-24-60 9-1 30 25 54 42 48 11-4 21-34 18-57Z" fill="url(#ear)" stroke="#94a7aa" stroke-width="1.2"/>
+    <path d="M159 113c-8 17 0 34 13 40" stroke="#8fa2a5" stroke-width="1.3" stroke-linecap="round" opacity=".7"/>
+    <ellipse cx="231" cy="124" rx="3.7" ry="4.8" fill="#4b5c5c"/><circle cx="232" cy="123" r="1" fill="#fff"/>
+    <path d="m236 152 12 9-3-13" fill="#eee9d4"/>
+    <path d="m90 221 1-5m8 7v-6m8 7v-6m78 6v-6m8 6v-5m8 5v-5" stroke="#667f86" stroke-width="1.5" stroke-linecap="round" opacity=".5"/>
+    <path d="M245 171h7m-6 7h6" stroke="#6f898f" stroke-width="1" opacity=".6"/>
+  </g>
+</svg>
